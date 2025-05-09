@@ -1,6 +1,7 @@
 import React from "react";
 
 import HomePage from "./Views/Home Page/homePage";
+import Navbar from "./components/navbar";
 
 import {
   BrowserRouter as Router,
@@ -25,11 +26,10 @@ function AppInner() {
 
   return (
     <div>
-
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>
-      
     </div>
   );
 }

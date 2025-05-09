@@ -38,17 +38,6 @@ const HomePage = () => {
 
     return (
         <div className="bg-[#121317] min-h-screen w-full text-[#F9FAFB] font-sans overflow-x-hidden">
-            <nav className="sticky top-0 z-[100] bg-[rgba(18,19,23,0.8)] backdrop-blur-lg border-b border-[rgba(156,163,175,0.1)] flex justify-between items-center p-3 lg:px-6 w-full">
-                <a href="/" className="flex items-center gap-3 font-bold text-xl text-[#F9FAFB]">
-                    <img
-                        src="https://img.icons8.com/fluency/96/000000/artificial-intelligence.png"
-                        alt="AI Marketplace"
-                        className="w-8 h-8 rounded-md"
-                    />
-                    <span>AirDock</span>
-                </a>
-            </nav>
-
             <div className="relative bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1920&auto=format&fit=crop")' }}>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#121317] to-transparent"></div>
                 <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center">
