@@ -37,6 +37,7 @@ const AgentPage = () => {
         console.log(agent);
 
         setAgent(agent);
+        
         // Set the latest version as default
         if (agent.VERSIONS && agent.VERSIONS.length > 0) {
           setSelectedVersion(agent.VERSIONS[agent.VERSIONS.length - 1]);
@@ -167,7 +168,7 @@ const AgentPage = () => {
             <img
               src={agent.AGENT_IMAGE}
               alt={agent.NAME}
-              className="w-full h-full object-cover mix-blend-overlay opacity-60"
+              className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1D1F24] to-transparent"></div>
             <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
