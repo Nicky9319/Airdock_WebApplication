@@ -6,7 +6,7 @@
     "CATEGORY": "Programming",
     "PRICE": 49.99,
     "RATING": 4.8,
-    "IMAGE": "https://via.placeholder.com/150?text=CodeBot",
+    "AGENT_IMAGE": "https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?q=80&w=500&auto=format&fit=crop",
     "TAGS": ["coding", "development", "automation"]
   },
   {
@@ -16,7 +16,7 @@
     "CATEGORY": "Data Science",
     "PRICE": 79.99,
     "RATING": 4.6,
-    "IMAGE": "https://via.placeholder.com/150?text=DataAI",
+    "AGENT_IMAGE": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500&auto=format&fit=crop",
     "TAGS": ["analytics", "data science", "visualization"]
   },
   {
@@ -26,7 +26,7 @@
     "CATEGORY": "Marketing",
     "PRICE": 59.99,
     "RATING": 4.5,
-    "IMAGE": "https://via.placeholder.com/150?text=CreatorAI",
+    "AGENT_IMAGE": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=500&auto=format&fit=crop",
     "TAGS": ["content", "writing", "marketing"]
   },
   {
@@ -36,7 +36,7 @@
     "CATEGORY": "Productivity",
     "PRICE": 39.99,
     "RATING": 4.7,
-    "IMAGE": "https://via.placeholder.com/150?text=AssistAI",
+    "AGENT_IMAGE": "https://images.unsplash.com/photo-1596003906949-67221c37965c?q=80&w=500&auto=format&fit=crop",
     "TAGS": ["assistant", "productivity", "organization"]
   },
   {
@@ -46,7 +46,7 @@
     "CATEGORY": "Design",
     "PRICE": 69.99,
     "RATING": 4.9,
-    "IMAGE": "https://via.placeholder.com/150?text=ImageAI",
+    "AGENT_IMAGE": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=500&auto=format&fit=crop",
     "TAGS": ["design", "images", "creativity"]
   },
   {
@@ -56,7 +56,7 @@
     "CATEGORY": "Health",
     "PRICE": 89.99,
     "RATING": 4.4,
-    "IMAGE": "https://via.placeholder.com/150?text=HealthAI",
+    "AGENT_IMAGE": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500&auto=format&fit=crop",
     "TAGS": ["health", "fitness", "wellness"]
   }
 ]

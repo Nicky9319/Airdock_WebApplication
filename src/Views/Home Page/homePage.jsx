@@ -8,41 +8,13 @@ const HomePage = () => {
     const [categories, setCategories] = useState(['All']);
 
     useEffect(() => {
-        // Simulating API call to fetch data
         const fetchAgents = async () => {
             try {
-                // In a real app, this would be a proper API endpoint
-                const response = await fetch('/src/data/agentsData.json');
+                const response = await fetch('/src/Views/Home Page/agentsData.json');
                 let data = await response.json();
-                
-                // Add sample image URLs based on agent category
-                data = data.map(agent => {
-                    const imageMap = {
-                        'Productivity': 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=500&auto=format&fit=crop',
-                        'Research': 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?q=80&w=500&auto=format&fit=crop',
-                        'Creativity': 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=500&auto=format&fit=crop',
-                        'Writing': 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=500&auto=format&fit=crop',
-                        'Data Analysis': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500&auto=format&fit=crop',
-                        'Communication': 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=500&auto=format&fit=crop',
-                        'Finance': 'https://images.unsplash.com/photo-1591696205602-2f950c417cb9?q=80&w=500&auto=format&fit=crop',
-                        'Education': 'https://images.unsplash.com/photo-1503676382389-4809596d5290?q=80&w=500&auto=format&fit=crop',
-                        'Healthcare': 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=500&auto=format&fit=crop',
-                        'Customer Support': 'https://images.unsplash.com/photo-1534536281715-e28d76689b4d?q=80&w=500&auto=format&fit=crop',
-                        'Design': 'https://images.unsplash.com/photo-1618004912476-29818d81ae2e?q=80&w=500&auto=format&fit=crop'
-                    };
-                    
-                    return {
-                        ...agent,
-                        IMAGE: agent.IMAGE || imageMap[agent.CATEGORY] || 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=500&auto=format&fit=crop'
-                    };
-                });
-                
                 setAgents(data);
-                
-                // Extract unique categories
                 const uniqueCategories = ['All', ...new Set(data.map(agent => agent.CATEGORY))];
                 setCategories(uniqueCategories);
-                
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching agents data:', error);
@@ -52,462 +24,89 @@ const HomePage = () => {
 
         setTimeout(() => {
             fetchAgents();
-        }, 800); // Simulate network delay
+        }, 800);
     }, []);
 
-    // Filter agents based on search term and selected category
     const filteredAgents = agents.filter(agent => {
-        const matchesSearch = 
+        const matchesSearch =
             agent.NAME.toLowerCase().includes(searchTerm.toLowerCase()) ||
             agent.DESCRIPTION.toLowerCase().includes(searchTerm.toLowerCase()) ||
             agent.CATEGORY.toLowerCase().includes(searchTerm.toLowerCase());
-        
         const matchesCategory = selectedCategory === 'All' || agent.CATEGORY === selectedCategory;
-        
         return matchesSearch && matchesCategory;
     });
 
-    // Redesigned styles for enhanced user experience with dark theme
-    const styles = {
-        pageWrapper: {
-            background: '#121317', // Background from dark theme
-            minHeight: '100vh',
-            width: '100%',
-            color: '#F9FAFB', // Text Primary from dark theme
-            fontFamily: 'Arial, sans-serif',
-            overflowX: 'hidden',
-        },
-        navBar: {
-            position: 'sticky',
-            top: 0,
-            zIndex: 100,
-            background: 'rgba(18, 19, 23, 0.8)', // Slightly transparent background
-            backdropFilter: 'blur(10px)',
-            borderBottom: '1px solid rgba(156, 163, 175, 0.1)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '12px 24px',
-            width: '100%',
-        },
-        logo: {
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            fontWeight: 'bold',
-            fontSize: '1.3rem',
-            color: '#F9FAFB',
-            textDecoration: 'none',
-        },
-        logoImage: {
-            width: '32px',
-            height: '32px',
-            borderRadius: '6px',
-        },
-        headerBanner: {
-            background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(79, 70, 229, 0.9) 100%)',
-            backgroundImage: 'url("https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1920&auto=format&fit=crop")',
-            backgroundBlendMode: 'overlay',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            padding: '80px 0 100px',
-            position: 'relative',
-            overflow: 'hidden',
-            textAlign: 'center',
-            color: '#F9FAFB',
-        },
-        headerGradientOverlay: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(0deg, #121317 0%, rgba(18, 19, 23, 0) 50%, rgba(18, 19, 23, 0.8) 100%)',
-        },
-        headerContent: {
-            position: 'relative',
-            zIndex: 2,
-            maxWidth: '1000px',
-            margin: '0 auto',
-            padding: '0 20px',
-        },
-        marketplaceIcon: {
-            width: '80px',
-            height: '80px',
-            margin: '0 auto 24px',
-            display: 'block',
-            borderRadius: '16px',
-            boxShadow: '0 8px 20px rgba(0, 0, 0, 0.3)',
-        },
-        title: {
-            fontSize: '3.5rem',
-            marginBottom: '20px',
-            fontWeight: 'bold',
-            color: '#F9FAFB',
-            textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
-            lineHeight: 1.2,
-        },
-        subtitle: {
-            fontSize: '1.4rem',
-            marginBottom: '40px',
-            color: '#F9FAFB',
-            maxWidth: '800px',
-            margin: '0 auto 40px',
-            lineHeight: 1.5,
-            textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
-        },
-        searchBar: {
-            display: 'flex',
-            maxWidth: '700px',
-            margin: '0 auto',
-            width: '100%',
-            position: 'relative',
-            top: '40px',
-            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.3)',
-            borderRadius: '50px',
-            overflow: 'hidden',
-            background: '#1D1F24',
-            border: '1px solid rgba(156, 163, 175, 0.1)',
-        },
-        searchInput: {
-            flex: '1',
-            padding: '18px 25px',
-            fontSize: '1.1rem',
-            border: 'none',
-            backgroundColor: '#1D1F24',
-            color: '#F9FAFB',
-            outline: 'none',
-        },
-        searchButton: {
-            background: '#0EA5E9',
-            color: '#F9FAFB',
-            border: 'none',
-            padding: '18px 35px',
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            fontSize: '1.1rem',
-            transition: 'all 0.2s ease',
-        },
-        mainContent: {
-            width: '100%',
-            margin: '0 auto',
-            padding: '40px 24px 80px',
-            maxWidth: '1600px',
-        },
-        categoryFilters: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '10px',
-            marginBottom: '30px',
-            padding: '10px 0',
-            overflowX: 'auto',
-        },
-        categoryButton: {
-            padding: '10px 20px',
-            borderRadius: '50px',
-            fontSize: '0.95rem',
-            fontWeight: 'medium',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            border: 'none',
-            whiteSpace: 'nowrap',
-        },
-        activeCategory: {
-            background: '#6366F1',
-            color: '#F9FAFB',
-            boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)',
-        },
-        inactiveCategory: {
-            background: 'rgba(156, 163, 175, 0.1)',
-            color: '#9CA3AF',
-        },
-        resultsHeader: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginTop: '10px',
-            marginBottom: '30px',
-            padding: '20px 0',
-            borderBottom: '1px solid rgba(156, 163, 175, 0.1)',
-        },
-        resultsCount: {
-            fontSize: '1.3rem',
-            fontWeight: 'bold',
-            color: '#F9FAFB',
-        },
-        sortOptions: {
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            color: '#9CA3AF',
-            fontSize: '0.95rem',
-        },
-        grid: {
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: '30px',
-            width: '100%',
-        },
-        card: {
-            background: '#1D1F24',
-            borderRadius: '16px',
-            overflow: 'hidden',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-            transition: 'all 0.3s ease',
-            cursor: 'pointer',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            border: '1px solid rgba(156, 163, 175, 0.05)',
-        },
-        cardImageContainer: {
-            position: 'relative',
-            height: '180px',
-            overflow: 'hidden',
-        },
-        cardImage: {
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            transition: 'transform 0.5s ease',
-        },
-        cardCategory: {
-            position: 'absolute',
-            top: '12px',
-            left: '12px',
-            background: 'rgba(18, 19, 23, 0.75)',
-            color: '#F9FAFB',
-            padding: '6px 12px',
-            borderRadius: '50px',
-            fontSize: '0.8rem',
-            fontWeight: 'bold',
-            backdropFilter: 'blur(4px)',
-            border: '1px solid rgba(156, 163, 175, 0.1)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-        },
-        cardRating: {
-            position: 'absolute',
-            top: '12px',
-            right: '12px',
-            background: 'rgba(18, 19, 23, 0.75)',
-            color: '#FBBF24',
-            padding: '6px 12px',
-            borderRadius: '50px',
-            fontSize: '0.8rem',
-            fontWeight: 'bold',
-            backdropFilter: 'blur(4px)',
-            border: '1px solid rgba(156, 163, 175, 0.1)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-        },
-        cardContent: {
-            padding: '25px',
-            display: 'flex',
-            flexDirection: 'column',
-            flexGrow: 1,
-        },
-        agentName: {
-            fontSize: '1.3rem',
-            fontWeight: 'bold',
-            marginBottom: '12px',
-            color: '#F9FAFB',
-            lineHeight: 1.3,
-        },
-        agentDescription: {
-            fontSize: '0.95rem',
-            color: '#9CA3AF',
-            marginBottom: '20px',
-            lineHeight: '1.6',
-            flexGrow: 1,
-        },
-        tagsContainer: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '6px',
-            marginBottom: '20px',
-        },
-        tag: {
-            background: 'rgba(156, 163, 175, 0.1)',
-            padding: '5px 10px',
-            borderRadius: '6px',
-            fontSize: '0.75rem',
-            color: '#9CA3AF',
-        },
-        cardFooter: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            borderTop: '1px solid rgba(156, 163, 175, 0.1)',
-            padding: '15px 25px',
-            background: 'rgba(18, 19, 23, 0.4)',
-        },
-        price: {
-            fontWeight: 'bold',
-            fontSize: '1.2rem',
-            color: '#0EA5E9',
-        },
-        actionButton: {
-            background: '#6366F1',
-            color: '#F9FAFB',
-            border: 'none',
-            borderRadius: '8px',
-            padding: '8px 16px',
-            fontSize: '0.9rem',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-        },
-        loadingContainer: {
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '400px',
-        },
-        loadingSpinner: {
-            width: '50px',
-            height: '50px',
-            border: '4px solid rgba(156, 163, 175, 0.2)',
-            borderTop: '4px solid #6366F1',
-            borderRadius: '50%',
-            animation: 'spin 1s linear infinite',
-            marginBottom: '20px',
-        },
-        loadingText: {
-            color: '#9CA3AF',
-            fontSize: '1.1rem',
-        },
-        noResults: {
-            textAlign: 'center',
-            padding: '100px 0',
-            color: '#9CA3AF',
-            fontSize: '1.2rem',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '20px',
-        },
-        noResultsEmoji: {
-            fontSize: '3rem',
-            marginBottom: '10px',
-        },
-        footer: {
-            borderTop: '1px solid rgba(156, 163, 175, 0.1)',
-            padding: '30px 0',
-            textAlign: 'center',
-            color: '#9CA3AF',
-            fontSize: '0.9rem',
-        },
-        '@keyframes spin': {
-            from: { transform: 'rotate(0deg)' },
-            to: { transform: 'rotate(360deg)' }
-        },
-    };
-
-    // Get responsive grid columns
-    const getGridTemplateColumns = () => {
-        const width = window.innerWidth;
-        if (width > 1600) return 'repeat(4, 1fr)';
-        if (width > 1200) return 'repeat(3, 1fr)';
-        if (width > 750) return 'repeat(2, 1fr)';
-        return 'repeat(1, 1fr)';
-    };
-
-    const [gridColumns, setGridColumns] = useState(getGridTemplateColumns());
-
-    useEffect(() => {
-        const handleResize = () => {
-            setGridColumns(getGridTemplateColumns());
-        };
-        
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Initial call
-        
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
     return (
-        <div style={styles.pageWrapper}>
-            <nav style={styles.navBar}>
-                <a href="/" style={styles.logo}>
-                    <img 
-                        src="https://img.icons8.com/fluency/96/000000/artificial-intelligence.png" 
-                        alt="AI Marketplace" 
-                        style={styles.logoImage} 
+        <div className="bg-[#121317] min-h-screen w-full text-[#F9FAFB] font-sans overflow-x-hidden">
+            <nav className="sticky top-0 z-[100] bg-[rgba(18,19,23,0.8)] backdrop-blur-lg border-b border-[rgba(156,163,175,0.1)] flex justify-between items-center p-3 lg:px-6 w-full">
+                <a href="/" className="flex items-center gap-3 font-bold text-xl text-[#F9FAFB]">
+                    <img
+                        src="https://img.icons8.com/fluency/96/000000/artificial-intelligence.png"
+                        alt="AI Marketplace"
+                        className="w-8 h-8 rounded-md"
                     />
                     <span>AirDock</span>
                 </a>
             </nav>
 
-            <div style={styles.headerBanner}>
-                <div style={styles.headerGradientOverlay}></div>
-                <div style={styles.headerContent}>
-                    <img 
-                        src="https://img.icons8.com/fluency/240/000000/artificial-intelligence.png" 
-                        alt="Marketplace Icon" 
-                        style={styles.marketplaceIcon} 
+            <div className="relative bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1920&auto=format&fit=crop")' }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121317] to-transparent"></div>
+                <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center">
+                    <img
+                        src="https://img.icons8.com/fluency/240/000000/artificial-intelligence.png"
+                        alt="Marketplace Icon"
+                        className="mx-auto mb-6 w-20 h-20 rounded-lg shadow-lg"
                     />
-                    <h1 style={styles.title}>AI Agent Marketplace</h1>
-                    <p style={styles.subtitle}>
-                        Discover and deploy powerful AI agents to transform your workflow, 
-                        enhance productivity, and solve complex problems with ease
+                    <h1 className="text-4xl lg:text-5xl font-bold mb-5 drop-shadow-md">AI Agent App Store</h1>
+                    <p className="text-lg lg:text-xl mb-10 text-[#F9FAFB] max-w-3xl mx-auto drop-shadow-sm">
+                        Discover and deploy powerful AI agents to transform your workflow, enhance productivity, and solve complex problems with ease
                     </p>
-                    <div style={styles.searchBar}>
+                    <div className="relative flex max-w-2xl mx-auto mt-10 bg-[#1D1F24] border border-[rgba(156,163,175,0.1)] rounded-full overflow-hidden shadow-lg">
                         <input
                             type="text"
                             placeholder="Search for AI agents, tools, or capabilities..."
-                            style={styles.searchInput}
+                            className="flex-1 py-4 px-6 text-lg bg-[#1D1F24] text-[#F9FAFB] outline-none"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
-                        <button style={styles.searchButton}>
+                        <button className="bg-[#0EA5E9] text-[#F9FAFB] py-4 px-8 font-bold text-lg transition">
                             Search
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div style={styles.mainContent}>
+            <div className="w-full mx-auto py-10 px-6">
                 {loading ? (
-                    <div style={styles.loadingContainer}>
-                        <div style={{...styles.loadingSpinner, animation: 'spin 1s linear infinite'}}></div>
-                        <div style={styles.loadingText}>Loading AI agents...</div>
+                    <div className="flex flex-col justify-center items-center h-96">
+                        <div className="w-12 h-12 border-4 border-gray-300 border-t-[#6366F1] rounded-full animate-spin mb-5"></div>
+                        <div className="text-gray-500 text-lg">Loading AI agents...</div>
                     </div>
                 ) : (
                     <>
-                        <div style={styles.categoryFilters}>
+                        <div className="flex flex-wrap gap-2 mb-8 py-2 overflow-x-auto">
                             {categories.map((category) => (
                                 <button
                                     key={category}
-                                    style={{
-                                        ...styles.categoryButton,
-                                        ...(selectedCategory === category ? styles.activeCategory : styles.inactiveCategory)
-                                    }}
                                     onClick={() => setSelectedCategory(category)}
+                                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                                        selectedCategory === category
+                                            ? 'bg-[#6366F1] text-[#F9FAFB] shadow-md'
+                                            : 'bg-[rgba(156,163,175,0.1)] text-[#9CA3AF]'
+                                    }`}
                                 >
                                     {category}
                                 </button>
                             ))}
                         </div>
-                        
-                        <div style={styles.resultsHeader}>
-                            <div style={styles.resultsCount}>
+
+                        <div className="flex justify-between items-center mt-2 mb-8 py-5 border-b border-[rgba(156,163,175,0.1)]">
+                            <div className="text-xl font-bold text-[#F9FAFB]">
                                 {filteredAgents.length} AI Agents Available
                             </div>
-                            <div style={styles.sortOptions}>
+                            <div className="flex items-center gap-2 text-sm text-[#9CA3AF]">
                                 <span>Sort by:</span>
-                                <select style={{
-                                    background: '#1D1F24',
-                                    color: '#F9FAFB',
-                                    border: '1px solid rgba(156, 163, 175, 0.2)',
-                                    borderRadius: '6px',
-                                    padding: '6px 10px'
-                                }}>
+                                <select className="bg-[#1D1F24] text-[#F9FAFB] border border-[rgba(156,163,175,0.2)] rounded px-2 py-1">
                                     <option>Popularity</option>
                                     <option>Price: Low to High</option>
                                     <option>Price: High to Low</option>
@@ -515,54 +114,46 @@ const HomePage = () => {
                                 </select>
                             </div>
                         </div>
-                        
+
                         {filteredAgents.length > 0 ? (
-                            <div style={{...styles.grid, gridTemplateColumns: gridColumns}}>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                                 {filteredAgents.map((agent) => (
                                     <div
                                         key={agent.ID}
-                                        style={styles.card}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.transform = 'translateY(-8px)';
-                                            e.currentTarget.style.boxShadow = '0 20px 30px rgba(0, 0, 0, 0.3)';
-                                            const img = e.currentTarget.querySelector('img');
-                                            if (img) img.style.transform = 'scale(1.05)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.transform = 'none';
-                                            e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
-                                            const img = e.currentTarget.querySelector('img');
-                                            if (img) img.style.transform = 'scale(1)';
-                                        }}
+                                        className="bg-[#1D1F24] rounded-2xl shadow hover:-translate-y-2 hover:shadow-xl transition-transform cursor-pointer"
                                     >
-                                        <div style={styles.cardImageContainer}>
-                                            <img src={agent.IMAGE} alt={agent.NAME} style={styles.cardImage} />
-                                            <div style={styles.cardCategory}>
+                                        <div className="relative h-44 overflow-hidden">
+                                            <img src={agent.AGENT_IMAGE} alt={agent.NAME} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                                            <div className="absolute top-3 left-3 bg-[rgba(18,19,23,0.75)] text-[#F9FAFB] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 border border-[rgba(156,163,175,0.1)]">
                                                 <span>⚙️</span> {agent.CATEGORY}
                                             </div>
-                                            <div style={styles.cardRating}>
+                                            <div className="absolute top-3 right-3 bg-[rgba(18,19,23,0.75)] text-[#FBBF24] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1	border border-[rgba(156,163,175,0.1)]">
                                                 <span>★</span> {agent.RATING}
                                             </div>
                                         </div>
-                                        <div style={styles.cardContent}>
-                                            <h3 style={styles.agentName}>{agent.NAME}</h3>
-                                            <p style={styles.agentDescription}>{agent.DESCRIPTION}</p>
-                                            <div style={styles.tagsContainer}>
+                                        <div className="p-6 flex flex-col flex-grow">
+                                            <h3 className="text-lg font-bold mb-3 text-[#F9FAFB]">{agent.NAME}</h3>
+                                            <p className="text-sm mb-5 text-[#9CA3AF] flex-grow">{agent.DESCRIPTION}</p>
+                                            <div className="flex flex-wrap gap-2 mb-5">
                                                 {agent.TAGS.map((tag, idx) => (
-                                                    <span key={idx} style={styles.tag}>{tag}</span>
+                                                    <span key={idx} className="bg-[rgba(156,163,175,0.1)] px-3 py-1 rounded text-xs text-[#9CA3AF]">
+                                                        {tag}
+                                                    </span>
                                                 ))}
                                             </div>
                                         </div>
-                                        <div style={styles.cardFooter}>
-                                            <div style={styles.price}>${agent.PRICE}</div>
-                                            <button style={styles.actionButton}>Get Agent</button>
+                                        <div className="flex items-center justify-between border-t border-[rgba(156,163,175,0.1)] px-6 py-4 bg-[rgba(18,19,23,0.4)]">
+                                            <div className="font-bold text-xl text-[#0EA5E9]">${agent.PRICE}</div>
+                                            <button className="bg-[#6366F1] text-[#F9FAFB] rounded-lg py-2 px-4	font-bold text-sm">
+                                                Get Agent
+                                            </button>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         ) : (
-                            <div style={styles.noResults}>
-                                <div style={styles.noResultsEmoji}>🔍</div>
+                            <div className="text-center py-24 text-[#9CA3AF] text-lg flex flex-col items-center gap-5">
+                                <div className="text-5xl">🔍</div>
                                 <div>No AI agents found matching your search criteria.</div>
                                 <div>Try different keywords or browse all categories.</div>
                             </div>
@@ -571,7 +162,7 @@ const HomePage = () => {
                 )}
             </div>
 
-            <div style={styles.footer}>
+            <div className="border-t border-[rgba(156,163,175,0.1)] py-8 text-center text-[#9CA3AF] text-sm">
                 © 2023 AirDock AI Marketplace. All rights reserved.
             </div>
         </div>
