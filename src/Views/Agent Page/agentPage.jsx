@@ -22,6 +22,7 @@ const AgentPage = () => {
   console.log('Server IP Address from .env:', serverIpAddress); // For verification
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchAgentData = async () => {
       try {
         const response = await fetch(`http://${serverIpAddress}:11000/Agents/GetAgentInfo?AGENT_ID=${agentId}`, {
