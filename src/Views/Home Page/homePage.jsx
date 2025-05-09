@@ -7,7 +7,7 @@ const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [categories, setCategories] = useState(['All']);
-
+    
     const serverIpAddress = import.meta.env.VITE_SERVER_IP_ADDRESS;
     console.log('Server IP Address from .env:', serverIpAddress); // For verification
 

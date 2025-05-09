@@ -18,11 +18,20 @@ const AgentPage = () => {
   const [notification, setNotification] = useState(null);
   const [selectedVersion, setSelectedVersion] = useState(null);
 
+  const serverIpAddress = import.meta.env.VITE_SERVER_IP_ADDRESS;
+  console.log('Server IP Address from .env:', serverIpAddress); // For verification
+
   useEffect(() => {
     const fetchAgentData = async () => {
       try {
-        const response = await fetch("/src/Views/Agent Page/agentData.json");
+        const response = await fetch(`http://${serverIpAddress}:11000/Agents/GetAgentInfo?AGENT_ID=${agentId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         let agent = await response.json();
+        agent = agent.AGENT_INFO;
 
         // Find agent with matching id (assuming id is a string)
         console.log(agent);
@@ -47,13 +56,13 @@ const AgentPage = () => {
   const handleGetAgent = () => {
     console.log(`Agent "${agent.NAME}" version "${selectedVersion}" requested`);
     const urlRequest = {
-      "EVENT": "INSTALL_AGENT", 
+      "EVENT": "INSTALL_AGENT",
       "AGENT_ID": agentId,
       "VERSION": selectedVersion
     };
     window.location.href = `agentbed://${encodeURIComponent(JSON.stringify(urlRequest))}`;
     console.log(`AgentBed://${encodeURIComponent(JSON.stringify(urlRequest))}`);
-    
+
     setNotification({
       message: `${agent.NAME} (${selectedVersion}) has been added to your workspace!`,
       type: "success",
@@ -131,9 +140,8 @@ const AgentPage = () => {
       {/* Notification */}
       {notification && (
         <div
-          className={`fixed top-4 right-4 z-200 px-6 py-3 rounded-lg shadow-lg flex items-center ${
-            notification.type === "success" ? "bg-green-700" : "bg-red-700"
-          }`}
+          className={`fixed top-4 right-4 z-200 px-6 py-3 rounded-lg shadow-lg flex items-center ${notification.type === "success" ? "bg-green-700" : "bg-red-700"
+            }`}
         >
           <span>{notification.message}</span>
           <button
@@ -284,10 +292,10 @@ const AgentPage = () => {
                     Add this agent to your workspace and start boosting your
                     productivity.
                   </p>
-                  
+
                   {/* Add version selector here */}
                   <VersionSelector />
-                  
+
                   <button
                     onClick={handleGetAgent}
                     className="bg-[#6366F1] hover:bg-[#4F46E5] text-[#F9FAFB] rounded-lg py-3 px-6 font-bold text-sm w-full transition shadow-md mb-4"
