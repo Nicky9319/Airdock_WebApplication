@@ -1,0 +1,62 @@
+[
+  {
+    "ID": "001",
+    "NAME": "CodeAssistant Pro",
+    "DESCRIPTION": "AI assistant that helps with code completion and bug fixing",
+    "CATEGORY": "Programming",
+    "PRICE": 49.99,
+    "RATING": 4.8,
+    "IMAGE": "https://via.placeholder.com/150?text=CodeBot",
+    "TAGS": ["coding", "development", "automation"]
+  },
+  {
+    "ID": "002",
+    "NAME": "DataAnalyst AI",
+    "DESCRIPTION": "Transform your data into actionable insights with advanced analytics",
+    "CATEGORY": "Data Science",
+    "PRICE": 79.99,
+    "RATING": 4.6,
+    "IMAGE": "https://via.placeholder.com/150?text=DataAI",
+    "TAGS": ["analytics", "data science", "visualization"]
+  },
+  {
+    "ID": "003",
+    "NAME": "ContentCreator",
+    "DESCRIPTION": "Generate engaging content for your blog, social media, or marketing campaigns",
+    "CATEGORY": "Marketing",
+    "PRICE": 59.99,
+    "RATING": 4.5,
+    "IMAGE": "https://via.placeholder.com/150?text=CreatorAI",
+    "TAGS": ["content", "writing", "marketing"]
+  },
+  {
+    "ID": "004",
+    "NAME": "VirtualAssistant Pro",
+    "DESCRIPTION": "Handle your scheduling, emails, and day-to-day tasks seamlessly",
+    "CATEGORY": "Productivity",
+    "PRICE": 39.99,
+    "RATING": 4.7,
+    "IMAGE": "https://via.placeholder.com/150?text=AssistAI",
+    "TAGS": ["assistant", "productivity", "organization"]
+  },
+  {
+    "ID": "005",
+    "NAME": "ImageMaster AI",
+    "DESCRIPTION": "Create and edit stunning images with AI-powered tools",
+    "CATEGORY": "Design",
+    "PRICE": 69.99,
+    "RATING": 4.9,
+    "IMAGE": "https://via.placeholder.com/150?text=ImageAI",
+    "TAGS": ["design", "images", "creativity"]
+  },
+  {
+    "ID": "006",
+    "NAME": "HealthCoach AI",
+    "DESCRIPTION": "Personalized health recommendations and tracking",
+    "CATEGORY": "Health",
+    "PRICE": 89.99,
+    "RATING": 4.4,
+    "IMAGE": "https://via.placeholder.com/150?text=HealthAI",
+    "TAGS": ["health", "fitness", "wellness"]
+  }
+]

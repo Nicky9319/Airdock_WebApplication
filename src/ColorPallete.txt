@@ -1,0 +1,24 @@
+Light Theme
+
+Background	#F7F9FB	Very light ice blue, calming and techy
+Surface (cards)	#FFFFFF	Pure white for contrast
+Primary Accent	#4F46E5	Indigo (future, trust, innovation)
+Secondary Accent	#06B6D4	Sky blue (freshness, energy)
+Text Primary	#111827	Dark navy, very readable
+Text Secondary	#6B7280	Cool gray, for less important text
+Success Color	#10B981	Emerald green (growth, trust)
+Warning Color	#F59E0B	Amber (attention, safe)
+Error Color	#EF4444	Strong red (alert, clear error)
+
+
+Dark Theme
+
+Background	#121317	Deep navy black, low eye strain
+Surface (cards)	#1D1F24	Dark gray, easy layering
+Primary Accent	#6366F1	Softened indigo for low-light environments
+Secondary Accent	#0EA5E9	Brighter cyan blue, popping but balanced
+Text Primary	#F9FAFB	Almost white, highly readable
+Text Secondary	#9CA3AF	Light gray, for secondary info
+Success Color	#22C55E	Neon-ish green for actions/success
+Warning Color	#FBBF24	Brightened amber (high visibility)
+Error Color	#F87171	Softer red (easier on dark background)

@@ -1,6 +1,6 @@
 import React from "react";
 
-import MainPage from "./Views/Main Page/mainPage";
+import HomePage from "./Views/Home Page/homePage";
 
 import {
   BrowserRouter as Router,
@@ -27,7 +27,7 @@ function AppInner() {
     <div>
 
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<HomePage />} />
       </Routes>
       
     </div>
