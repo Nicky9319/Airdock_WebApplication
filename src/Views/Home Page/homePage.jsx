@@ -8,10 +8,14 @@ const HomePage = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [categories, setCategories] = useState(['All']);
 
+    const serverIpAddress = import.meta.env.VITE_SERVER_IP_ADDRESS;
+    console.log('Server IP Address from .env:', serverIpAddress); // For verification
+
+
     useEffect(() => {
         const fetchAgents = async () => {
             try {
-                const response = await fetch('/src/Views/Home Page/agentsData.json');
+                const response = await fetch(`http://${serverIpAddress}:11000/Agents/GetAllAgentsInfo`);
                 let data = await response.json();
                 setAgents(data);
                 const uniqueCategories = ['All', ...new Set(data.map(agent => agent.CATEGORY))];
@@ -23,9 +27,7 @@ const HomePage = () => {
             }
         };
 
-        setTimeout(() => {
-            fetchAgents();
-        }, 800);
+        fetchAgents();
     }, []);
 
     const filteredAgents = agents.filter(agent => {
