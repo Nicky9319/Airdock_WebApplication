@@ -15,7 +15,7 @@ const HomePage = () => {
     useEffect(() => {
         const fetchAgents = async () => {
             try {
-                const response = await fetch(`http://${serverIpAddress}:11000/Agents/GetAllAgentsInfo`);
+                const response = await fetch(`https://${serverIpAddress}:11000/Agents/GetAllAgentsInfo`);
                 let data = await response.json();
                 setAgents(data);
                 const uniqueCategories = ['All', ...new Set(data.map(agent => agent.CATEGORY))];

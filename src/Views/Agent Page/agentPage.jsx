@@ -25,7 +25,7 @@ const AgentPage = () => {
     window.scrollTo(0, 0);
     const fetchAgentData = async () => {
       try {
-        const response = await fetch(`http://${serverIpAddress}:11000/Agents/GetAgentInfo?AGENT_ID=${agentId}`, {
+        const response = await fetch(`https://${serverIpAddress}:11000/Agents/GetAgentInfo?AGENT_ID=${agentId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
