@@ -1,14 +1,16 @@
 Light Theme
 
-Background	#F7F9FB	Very light ice blue, calming and techy
-Surface (cards)	#FFFFFF	Pure white for contrast
-Primary Accent	#4F46E5	Indigo (future, trust, innovation)
-Secondary Accent	#06B6D4	Sky blue (freshness, energy)
-Text Primary	#111827	Dark navy, very readable
-Text Secondary	#6B7280	Cool gray, for less important text
-Success Color	#10B981	Emerald green (growth, trust)
-Warning Color	#F59E0B	Amber (attention, safe)
-Error Color	#EF4444	Strong red (alert, clear error)
+Background            #ffffff     Pure white, clean and minimalist
+Surface (cards)       #e0e0e0     Light gray, soft contrast for sections or cards
+Primary Accent        #6a11cb     Vibrant purple (modern, bold, energetic)
+Secondary Accent      #2575fc     Bright blue (freshness, tech vibe)
+Text Primary          #000000     Black, maximum readability
+Text Secondary        #333333     Dark gray, for secondary emphasis
+CTA Button Bg         #4b6cb7     Muted blue (trust, reliability)
+CTA Button Hover      #273c75     Deep blue (strong hover/active state)
+Highlight Gradient 1  #c471ed     Bright lavender (modern and playful)
+Highlight Gradient 2  #8a4cf0     Soft purple (smooth transitions, clean)
+
 
 
 Dark Theme
@@ -22,3 +24,18 @@ Text Secondary	#9CA3AF	Light gray, for secondary info
 Success Color	#22C55E	Neon-ish green for actions/success
 Warning Color	#FBBF24	Brightened amber (high visibility)
 Error Color	#F87171	Softer red (easier on dark background)
+
+
+
+
+old light color theme :
+
+Background	#F7F9FB	Very light ice blue, calming and techy
+Surface (cards)	#FFFFFF	Pure white for contrast
+Primary Accent	#4F46E5	Indigo (future, trust, innovation)
+Secondary Accent	#06B6D4	Sky blue (freshness, energy)
+Text Primary	#111827	Dark navy, very readable
+Text Secondary	#6B7280	Cool gray, for less important text
+Success Color	#10B981	Emerald green (growth, trust)
+Warning Color	#F59E0B	Amber (attention, safe)
+Error Color	#EF4444	Strong red (alert, clear error)
