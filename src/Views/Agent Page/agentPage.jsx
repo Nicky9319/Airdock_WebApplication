@@ -16,23 +16,23 @@ const AgentPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [notification, setNotification] = useState(null);
+  const [selectedVersion, setSelectedVersion] = useState(null);
 
   useEffect(() => {
     const fetchAgentData = async () => {
       try {
         const response = await fetch("/src/Views/Agent Page/agentData.json");
-        let agents = await response.json();
+        let agent = await response.json();
 
         // Find agent with matching id (assuming id is a string)
-        console.log(agents);
-        const selectedAgent = agents.find(
-          (a) => String(a.ID) === String(agentId)
-        );
-        if (selectedAgent) {
-          setAgent(selectedAgent);
-        } else {
-          setError("Agent not found");
+        console.log(agent);
+
+        setAgent(agent);
+        // Set the latest version as default
+        if (agent.VERSIONS && agent.VERSIONS.length > 0) {
+          setSelectedVersion(agent.VERSIONS[agent.VERSIONS.length - 1]);
         }
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching agent data:", error);
@@ -45,10 +45,17 @@ const AgentPage = () => {
   }, [agentId]);
 
   const handleGetAgent = () => {
-    console.log();
-
+    console.log(`Agent "${agent.NAME}" version "${selectedVersion}" requested`);
+    const urlRequest = {
+      "EVENT": "INSTALL_AGENT", 
+      "AGENT_ID": agentId,
+      "VERSION": selectedVersion
+    };
+    window.location.href = `agentbed://${encodeURIComponent(JSON.stringify(urlRequest))}`;
+    console.log(`AgentBed://${encodeURIComponent(JSON.stringify(urlRequest))}`);
+    
     setNotification({
-      message: `${agent.NAME} has been added to your workspace!`,
+      message: `${agent.NAME} (${selectedVersion}) has been added to your workspace!`,
       type: "success",
     });
 
@@ -60,6 +67,32 @@ const AgentPage = () => {
     // Here you would typically integrate with a backend to process the agent purchase
     console.log(`Agent "${agent.NAME}" requested`);
   };
+
+  // Version selection handler
+  const handleVersionChange = (e) => {
+    setSelectedVersion(e.target.value);
+  };
+
+  // Version dropdown component
+  const VersionSelector = () => (
+    <div className="flex flex-col mb-4">
+      <label htmlFor="version-select" className="text-[#9CA3AF] mb-2 text-sm">
+        Select Version:
+      </label>
+      <select
+        id="version-select"
+        value={selectedVersion || ""}
+        onChange={handleVersionChange}
+        className="bg-[rgba(18,19,23,0.75)] text-[#F9FAFB] py-2 px-3 rounded-lg border border-[rgba(156,163,175,0.2)] focus:outline-none focus:ring-2 focus:ring-[#6366F1]"
+      >
+        {agent?.VERSIONS?.map((version) => (
+          <option key={version} value={version}>
+            {version}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
 
   if (loading) {
     return (
@@ -98,7 +131,7 @@ const AgentPage = () => {
       {/* Notification */}
       {notification && (
         <div
-          className={`fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg flex items-center ${
+          className={`fixed top-4 right-4 z-200 px-6 py-3 rounded-lg shadow-lg flex items-center ${
             notification.type === "success" ? "bg-green-700" : "bg-red-700"
           }`}
         >
@@ -251,6 +284,10 @@ const AgentPage = () => {
                     Add this agent to your workspace and start boosting your
                     productivity.
                   </p>
+                  
+                  {/* Add version selector here */}
+                  <VersionSelector />
+                  
                   <button
                     onClick={handleGetAgent}
                     className="bg-[#6366F1] hover:bg-[#4F46E5] text-[#F9FAFB] rounded-lg py-3 px-6 font-bold text-sm w-full transition shadow-md mb-4"
@@ -272,7 +309,7 @@ const AgentPage = () => {
                       <FaCodeBranch className="text-[#9CA3AF] mr-3" />
                       <span className="text-[#9CA3AF] mr-2 w-24">Version:</span>
                       <span className="text-[#F9FAFB] font-medium">
-                        {agent.VERSION}
+                        {selectedVersion || (agent.VERSIONS && agent.VERSIONS.length > 0 ? agent.VERSIONS[agent.VERSIONS.length - 1] : 'N/A')}
                       </span>
                     </div>
                     <div className="flex items-center">
