@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     const [agents, setAgents] = useState([]);
@@ -107,37 +108,38 @@ const HomePage = () => {
                         {filteredAgents.length > 0 ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                                 {filteredAgents.map((agent) => (
-                                    <div
-                                        key={agent.ID}
-                                        className="bg-[#1D1F24] rounded-2xl shadow hover:-translate-y-2 hover:shadow-xl transition-transform cursor-pointer"
-                                    >
-                                        <div className="relative h-44 overflow-hidden">
-                                            <img src={agent.AGENT_IMAGE} alt={agent.NAME} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
-                                            <div className="absolute top-3 left-3 bg-[rgba(18,19,23,0.75)] text-[#F9FAFB] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 border border-[rgba(156,163,175,0.1)]">
-                                                <span>⚙️</span> {agent.CATEGORY}
+                                    <Link to={`/agent/${agent.ID}`} key={agent.ID}>
+                                        <div
+                                            className="bg-[#1D1F24] rounded-2xl shadow hover:-translate-y-2 hover:shadow-xl transition-transform cursor-pointer"
+                                        >
+                                            <div className="relative h-44 overflow-hidden">
+                                                <img src={agent.AGENT_IMAGE} alt={agent.NAME} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                                                <div className="absolute top-3 left-3 bg-[rgba(18,19,23,0.75)] text-[#F9FAFB] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 border border-[rgba(156,163,175,0.1)]">
+                                                    <span>⚙️</span> {agent.CATEGORY}
+                                                </div>
+                                                <div className="absolute top-3 right-3 bg-[rgba(18,19,23,0.75)] text-[#FBBF24] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1	border border-[rgba(156,163,175,0.1)]">
+                                                    <span>★</span> {agent.RATING}
+                                                </div>
                                             </div>
-                                            <div className="absolute top-3 right-3 bg-[rgba(18,19,23,0.75)] text-[#FBBF24] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1	border border-[rgba(156,163,175,0.1)]">
-                                                <span>★</span> {agent.RATING}
+                                            <div className="p-6 flex flex-col flex-grow">
+                                                <h3 className="text-lg font-bold mb-3 text-[#F9FAFB]">{agent.NAME}</h3>
+                                                <p className="text-sm mb-5 text-[#9CA3AF] flex-grow">{agent.DESCRIPTION}</p>
+                                                <div className="flex flex-wrap gap-2 mb-5">
+                                                    {agent.TAGS.map((tag, idx) => (
+                                                        <span key={idx} className="bg-[rgba(156,163,175,0.1)] px-3 py-1 rounded text-xs text-[#9CA3AF]">
+                                                            {tag}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center justify-between border-t border-[rgba(156,163,175,0.1)] px-6 py-4 bg-[rgba(18,19,23,0.4)]">
+                                                <div className="font-bold text-xl text-[#0EA5E9]">${agent.PRICE}</div>
+                                                <div className="bg-[#6366F1] text-[#F9FAFB] rounded-lg py-2 px-4	font-bold text-sm">
+                                                    Get Agent
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="p-6 flex flex-col flex-grow">
-                                            <h3 className="text-lg font-bold mb-3 text-[#F9FAFB]">{agent.NAME}</h3>
-                                            <p className="text-sm mb-5 text-[#9CA3AF] flex-grow">{agent.DESCRIPTION}</p>
-                                            <div className="flex flex-wrap gap-2 mb-5">
-                                                {agent.TAGS.map((tag, idx) => (
-                                                    <span key={idx} className="bg-[rgba(156,163,175,0.1)] px-3 py-1 rounded text-xs text-[#9CA3AF]">
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center justify-between border-t border-[rgba(156,163,175,0.1)] px-6 py-4 bg-[rgba(18,19,23,0.4)]">
-                                            <div className="font-bold text-xl text-[#0EA5E9]">${agent.PRICE}</div>
-                                            <button className="bg-[#6366F1] text-[#F9FAFB] rounded-lg py-2 px-4	font-bold text-sm">
-                                                Get Agent
-                                            </button>
-                                        </div>
-                                    </div>
+                                    </Link>
                                 ))}
                             </div>
                         ) : (

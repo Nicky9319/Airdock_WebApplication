@@ -1,0 +1,119 @@
+[
+  {
+    "ID": "1",
+    "NAME": "DataAnalyst AI",
+    "CATEGORY": "Data Analysis",
+    "DESCRIPTION": "Advanced data analysis agent that processes large datasets and provides actionable insights with visualization capabilities.",
+    "DETAILED_DESCRIPTION": "DataAnalyst AI is designed to handle complex data processing tasks with ease. It can process structured and unstructured data, perform statistical analysis, and generate comprehensive reports with interactive visualizations. Ideal for businesses seeking to make data-driven decisions without the need for a specialized data science team.",
+    "FEATURES": [
+      "Automated data cleaning and preprocessing",
+      "Statistical analysis and pattern recognition",
+      "Interactive visualization dashboard",
+      "Natural language query processing",
+      "Export capabilities to various formats"
+    ],
+    "PRICE": 29.99,
+    "RATING": 4.8,
+    "REVIEWS": [
+      {
+        "USER": "DataScientist92",
+        "RATING": 5,
+        "COMMENT": "Exceptional tool that saved me hours of preprocessing work. The visualizations are top-notch."
+      },
+      {
+        "USER": "BusinessAnalyst",
+        "RATING": 4.5,
+        "COMMENT": "Great for quick insights, though I wish it had more customization options for reports."
+      }
+    ],
+    "AGENT_IMAGE": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+    "TAGS": ["Data Science", "Analytics", "Business Intelligence", "Visualization"],
+    "REQUIREMENTS": "Compatible with CSV, Excel, JSON, and SQL databases",
+    "VERSION": "2.1.3",
+    "RELEASE_DATE": "2023-09-15",
+    "USE_CASES": [
+      "Business analytics and reporting",
+      "Scientific research data processing",
+      "Market trend analysis",
+      "Financial forecasting"
+    ]
+  },
+  {
+    "ID": "2",
+    "NAME": "CodeAssist Pro",
+    "CATEGORY": "Software Development",
+    "DESCRIPTION": "AI coding assistant that helps developers write better code faster with real-time suggestions and bug detection.",
+    "DETAILED_DESCRIPTION": "CodeAssist Pro is an intelligent coding companion that integrates with your favorite IDEs to provide contextual code suggestions, identify potential bugs before compilation, and offer optimization tips. It supports multiple programming languages and frameworks, adapting to your coding style over time for increasingly personalized assistance.",
+    "FEATURES": [
+      "Real-time code completion and suggestions",
+      "Automated bug detection and fixes",
+      "Code refactoring recommendations",
+      "Performance optimization analysis",
+      "Documentation generation"
+    ],
+    "PRICE": 39.99,
+    "RATING": 4.9,
+    "REVIEWS": [
+      {
+        "USER": "SeniorDev",
+        "RATING": 5,
+        "COMMENT": "This tool has dramatically improved my productivity. The suggestions are surprisingly intelligent."
+      },
+      {
+        "USER": "WebDeveloper21",
+        "RATING": 4.8,
+        "COMMENT": "Great for catching subtle bugs I would have missed. Worth every penny."
+      }
+    ],
+    "AGENT_IMAGE": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop",
+    "TAGS": ["Coding", "Development", "Programming", "DevTools"],
+    "REQUIREMENTS": "Compatible with VSCode, IntelliJ, and other major IDEs",
+    "VERSION": "3.4.0",
+    "RELEASE_DATE": "2023-10-05",
+    "USE_CASES": [
+      "Web and mobile app development",
+      "Enterprise software projects",
+      "Open source contributions",
+      "Learning programming concepts"
+    ]
+  },
+  {
+    "ID": "3",
+    "NAME": "ContentGenius",
+    "CATEGORY": "Content Creation",
+    "DESCRIPTION": "AI-powered content creation tool that generates engaging articles, social media posts, and marketing copy.",
+    "DETAILED_DESCRIPTION": "ContentGenius leverages advanced natural language processing to create compelling content across various formats and topics. It can adapt to your brand voice, maintain consistent messaging, and optimize copy for different platforms and SEO requirements. The tool includes research capabilities to ensure accurate and up-to-date information.",
+    "FEATURES": [
+      "Multi-format content generation",
+      "Brand voice customization",
+      "SEO optimization suggestions",
+      "Content calendar integration",
+      "Engagement analytics"
+    ],
+    "PRICE": 24.99,
+    "RATING": 4.7,
+    "REVIEWS": [
+      {
+        "USER": "MarketingPro",
+        "RATING": 4.7,
+        "COMMENT": "Has transformed our content production workflow. Very impressed with quality."
+      },
+      {
+        "USER": "BloggerExtraordinaire",
+        "RATING": 4.5,
+        "COMMENT": "Great starting point for articles, though human editing is still needed for perfect results."
+      }
+    ],
+    "AGENT_IMAGE": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop",
+    "TAGS": ["Content Marketing", "Copywriting", "Social Media", "SEO"],
+    "REQUIREMENTS": "Web browser access only, no installation required",
+    "VERSION": "2.8.5",
+    "RELEASE_DATE": "2023-08-22",
+    "USE_CASES": [
+      "Blog article creation",
+      "Social media campaign management",
+      "Email marketing sequences",
+      "Product descriptions"
+    ]
+  }
+]
