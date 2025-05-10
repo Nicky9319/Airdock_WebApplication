@@ -2,7 +2,7 @@
   "rewrites": [
     { 
       "source": "/Agents/:path*", 
-      "destination": "http://127.0.0.1:11000/Agents/:path*" 
+      "destination": "http://159.89.169.75:11000/Agents/:path*" 
     },
     { 
       "source": "/(.*)", 
